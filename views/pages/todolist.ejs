@@ -1,0 +1,36 @@
+<!-- Faire un truc plus présentable -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <form action="/task" method="POST">
+        <input type="text" name="task" id="task" placeholder="Ex: Faire les course ..." autofocus req>
+        <button type="submit button" class="btn btn-primary">Ajouter</button>
+    </form>
+
+    <h3>Liste des taches</h3>
+    
+    <ul>
+        <% tasks.forEach((tasks, index) => { %>
+            <li>
+                <% if (tasks.status) { %>
+                    <s><%= tasks.title %></s> 
+                    | <a href="/task/<%= index %>/delete">Delete</a>
+                <% } else { %>
+                    <%= tasks.title %>
+                    | <a href="/task/<%= index %>/status">Done</a>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+
+</body>
+</html>
